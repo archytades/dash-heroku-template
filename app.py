@@ -51,6 +51,7 @@ questions = dict([(value, key) for key, value in questions.items()])
 
 
 app=dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 app.layout = html.Div([ 
     html.H1("Insights from the GSS"),
     html.H3("by: Brandtly Jones"),

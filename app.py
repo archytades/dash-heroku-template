@@ -54,19 +54,20 @@ app=dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([ 
     html.H1("Insights from the GSS"),
     html.H3("by: Brandtly Jones"),
-    html.H3("with huge help from and appreciation to Prof. Jonathan Kropko"),
+    html.H3("with huge appreciation to Prof. Jonathan Kropko"),
     html.Div([dcc.Markdown(children = markdown2)]),
     html.H3("Use the dropdown menus to compare responses to survey questions from people of different sexes, regions, and years of education."),
     html.Div([
             
             #the dropdown menus go here
             html.H3("Question"),
-            
+            #dropdown menu1
             dcc.Dropdown(id='cat_choice',
                 options=[{'label': i, 'value': i} for i in ['relationship','male_breadwinner','men_bettersuited','child_suffer','men_overwork']],
                 value='male_breadwinner'),
         
         html.H3("group"),
+        #dropdown menu2
         dcc.Dropdown(id='group',
                      options=[{'label':i, 'value':i} for i in ['sex','region','education']],
                      value='sex')
@@ -75,6 +76,7 @@ app.layout = html.Div([
         ], style={'width': '25%', 'float': 'left'}),
         
         html.Div([
+            #bar graph with input from dropdowns
             dcc.Graph(id="bargraph")
         
         ], style={'width': '70%', 'float': 'right'})
@@ -84,7 +86,6 @@ app.layout = html.Div([
 ])    
 
 
-#dropdown menu 1: choose category
 @app.callback(Output(component_id='bargraph', component_property='figure'),
               [Input(component_id='cat_choice', component_property='value'),
                Input(component_id='group', component_property='value')])

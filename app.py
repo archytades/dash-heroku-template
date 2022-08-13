@@ -11,7 +11,7 @@ from dash.dependencies import Input, Output
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 
-gss = pd.read_csv("https://github.com/archytades/dash-heroku-template/blob/master/gss_clean.csv")
+gss_clean = pd.read_csv("https://github.com/archytades/dash-heroku-template/blob/master/gss_clean.csv")
 
 markdown2='''The **General Social Survey**, or GSS, in use since the 1970s collects data about modern society, including attitudes about societal trends and opinions. The survey primarily uses *mailed surveys*. According the the GSS "The GSS sample consists of a random sample of households and persons that are representative of households and people in the United States." It attempts to confirm these groupings through cross-validation with **census results**. The GSS outlines its methodology in [this document](https://gss.norc.org/Documents/reports/methodological-reports/MR134%20-%20Ballot%20and%20Form.pdf).'''
 

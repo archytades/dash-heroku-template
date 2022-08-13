@@ -5,37 +5,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
 import dash
-#from jupyter_dash import JupyterDash
+from jupyter_dash import JupyterDash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-#%%capture
-gss = pd.read_csv("https://github.com/jkropko/DS-6001/raw/master/localdata/gss2018.csv",
-                 encoding='cp1252', na_values=['IAP','IAP,DK,NA,uncodeable', 'NOT SURE',
-                                               'DK', 'IAP, DK, NA, uncodeable', '.a', "CAN'T CHOOSE"])
 
-mycols = ['id', 'wtss', 'sex', 'educ', 'region', 'age', 'coninc',
-          'prestg10', 'mapres10', 'papres10', 'sei10', 'satjob',
-          'fechld', 'fefam', 'fepol', 'fepresch', 'meovrwrk'] 
-gss_clean = gss[mycols]
-gss_clean = gss_clean.rename({'wtss':'weight', 
-                              'educ':'education', 
-                              'coninc':'income', 
-                              'prestg10':'job_prestige',
-                              'mapres10':'mother_job_prestige', 
-                              'papres10':'father_job_prestige', 
-                              'sei10':'socioeconomic_index', 
-                              'fechld':'relationship', 
-                              'fefam':'male_breadwinner', 
-                              'fehire':'hire_women', 
-                              'fejobaff':'preference_hire_women', 
-                              'fepol':'men_bettersuited', 
-                              'fepresch':'child_suffer',
-                              'meovrwrk':'men_overwork'},axis=1)
-#gss_clean.age = gss_clean.age.replace({'89 or older':'89'})
-#gss_clean.age = gss_clean.age.astype('float')
+gss = pd.read_csv("gss_clean.csv")
 
 markdown2='''The **General Social Survey**, or GSS, in use since the 1970s collects data about modern society, including attitudes about societal trends and opinions. The survey primarily uses *mailed surveys*. According the the GSS "The GSS sample consists of a random sample of households and persons that are representative of households and people in the United States." It attempts to confirm these groupings through cross-validation with **census results**. The GSS outlines its methodology in [this document](https://gss.norc.org/Documents/reports/methodological-reports/MR134%20-%20Ballot%20and%20Form.pdf).'''
 
